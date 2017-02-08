@@ -95,6 +95,8 @@ define(['exports', 'aurelia-framework', 'flatpickr', 'flatpickr/dist/flatpickr.c
         };
 
         AureliaFlatpickrCustomElement.prototype.onChange = function onChange(selectedDates, dateStr, instance) {
+            var _this = this;
+
             if (!this._datesAreSynced(this.value, selectedDates)) {
 
                 switch (selectedDates.length) {
@@ -102,16 +104,20 @@ define(['exports', 'aurelia-framework', 'flatpickr', 'flatpickr/dist/flatpickr.c
                         this.value = undefined;
                         break;
                     case 1:
-                        this.value = selectedDates[0];
+                        this.value = this._cloneDate(selectedDates[0]);
                         break;
                     default:
-                        this.value = selectedDates;
+                        this.value = selectedDates.map(function (d) {
+                            return _this._cloneDate(d);
+                        });
                         break;
                 }
             }
         };
 
         AureliaFlatpickrCustomElement.prototype.valueChanged = function valueChanged() {
+            var _this2 = this;
+
             if (!this.flatpickr) {
                 return;
             }
@@ -125,10 +131,10 @@ define(['exports', 'aurelia-framework', 'flatpickr', 'flatpickr/dist/flatpickr.c
             if (!this.value) {
                 newDate = undefined;
             } else if (!Array.isArray(this.value)) {
-                newDate = new Date(this.value);
+                newDate = this._cloneDate(this.value);
             } else {
                 newDate = this.value.map(function (d) {
-                    return newDate(d);
+                    return _this2._cloneDate(d);
                 });
             }
 
@@ -141,7 +147,7 @@ define(['exports', 'aurelia-framework', 'flatpickr', 'flatpickr/dist/flatpickr.c
             for (var d = 0; d < modelDates.length; d++) {
                 var modelDate = modelDates[d];
 
-                if (view.indexOf(modelDate)) {
+                if (view.indexOf(modelDate) > -1) {
                     continue;
                 }
 
@@ -151,7 +157,7 @@ define(['exports', 'aurelia-framework', 'flatpickr', 'flatpickr/dist/flatpickr.c
             for (var _d = 0; _d < view.length; _d++) {
                 var viewDate = view[_d];
 
-                if (modelDates.indexOf(viewDate)) {
+                if (modelDates.indexOf(viewDate) > -1) {
                     continue;
                 }
 
@@ -159,6 +165,10 @@ define(['exports', 'aurelia-framework', 'flatpickr', 'flatpickr/dist/flatpickr.c
             }
 
             return true;
+        };
+
+        AureliaFlatpickrCustomElement.prototype._cloneDate = function _cloneDate(d) {
+            return new Date(d.getTime ? d.valueOf() : d);
         };
 
         return AureliaFlatpickrCustomElement;

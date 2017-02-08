@@ -38,10 +38,10 @@ export class AureliaFlatpickrCustomElement {
                     this.value = undefined;
                     break;
                 case 1:
-                    this.value = selectedDates[0];
+                    this.value = this._cloneDate(selectedDates[0]);
                     break;
                 default:
-                    this.value = selectedDates;
+                    this.value = selectedDates.map(d => this._cloneDate(d));
                     break;
             }
         }
@@ -62,10 +62,10 @@ export class AureliaFlatpickrCustomElement {
             newDate = undefined;
         }
         else if (!Array.isArray(this.value)) {
-            newDate = new Date(this.value);
+            newDate = this._cloneDate(this.value);
         }
         else {
-            newDate = this.value.map(d => newDate(d));
+            newDate = this.value.map(d => this._cloneDate(d));
         }
 
         this.flatpickr.setDate(newDate);
@@ -77,7 +77,7 @@ export class AureliaFlatpickrCustomElement {
         for(let d = 0; d < modelDates.length; d++) {
             let modelDate = modelDates[d];
 
-            if (view.indexOf(modelDate)) {
+            if (view.indexOf(modelDate) > -1) {
                 continue;
             }
 
@@ -87,7 +87,7 @@ export class AureliaFlatpickrCustomElement {
         for(let d = 0; d < view.length; d++) {
             let viewDate = view[d];
 
-            if (modelDates.indexOf(viewDate)) {
+            if (modelDates.indexOf(viewDate) > -1) {
                 continue;
             }
 
@@ -95,5 +95,9 @@ export class AureliaFlatpickrCustomElement {
         }
 
         return true;
+    }
+
+    _cloneDate(d) {
+        return new Date(d.getTime ? d.valueOf() : d);
     }
 }
