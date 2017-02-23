@@ -115,6 +115,8 @@ export let AureliaFlatpickrCustomElement = (_dec = inject(Element), _dec2 = bind
     }
 
     _datesAreSynced(model, view) {
+        model = model || [];
+
         let modelDates = Array.isArray(model) ? model : [model];
 
         for (let d = 0; d < modelDates.length; d++) {

@@ -142,6 +142,8 @@ define(['exports', 'aurelia-framework', 'flatpickr', 'flatpickr/dist/flatpickr.c
         };
 
         AureliaFlatpickrCustomElement.prototype._datesAreSynced = function _datesAreSynced(model, view) {
+            model = model || [];
+
             var modelDates = Array.isArray(model) ? model : [model];
 
             for (var d = 0; d < modelDates.length; d++) {

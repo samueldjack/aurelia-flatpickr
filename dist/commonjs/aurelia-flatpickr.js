@@ -139,6 +139,8 @@ var AureliaFlatpickrCustomElement = exports.AureliaFlatpickrCustomElement = (_de
     };
 
     AureliaFlatpickrCustomElement.prototype._datesAreSynced = function _datesAreSynced(model, view) {
+        model = model || [];
+
         var modelDates = Array.isArray(model) ? model : [model];
 
         for (var d = 0; d < modelDates.length; d++) {
