@@ -1,6 +1,6 @@
 {
   "name": "aurelia-flatpickr",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "dependencies": {
     "abbrev": {
       "version": "1.0.9",
@@ -218,6 +218,18 @@
       "version": "1.0.1",
       "from": "async-each@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/async-each/-/async-each-1.0.1.tgz",
+      "dev": true
+    },
+    "aurelia-dependency-injection": {
+      "version": "1.3.0",
+      "from": "aurelia-dependency-injection@latest",
+      "resolved": "https://registry.npmjs.org/aurelia-dependency-injection/-/aurelia-dependency-injection-1.3.0.tgz",
+      "dev": true
+    },
+    "aurelia-metadata": {
+      "version": "1.0.3",
+      "from": "aurelia-metadata@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/aurelia-metadata/-/aurelia-metadata-1.0.3.tgz",
       "dev": true
     },
     "aurelia-pal": {
