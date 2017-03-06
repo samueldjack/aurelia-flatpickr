@@ -22,7 +22,20 @@ Then use as a custom element anywhere throughout your application:
 ```html
   <aurelia-flatpickr config.bind="config" value.bind="value"></aurelia-flatpickr>
   ```
+### Using Custom Input Groups
+The default template for the input element can be replaced to customise the buttons available. Here's an example:
 
+```html
+<aurelia-flatpickr config.bind="{wrap:true}">
+  <div class="input-group aurelia-flatpickr">
+      <input type="text" class="form-control" placeholder="Select date" data-input>
+      <span class="input-group-btn">
+          <button class="btn btn-default" type="button" data-clear>Clear</button>
+          <button class="btn btn-default" type="button" data-toggle>Show</button>
+      </span>
+  </div>
+</aurelia-flatpickr>
+   ```
 ## Running The Tests
 
 To run the unit tests, first ensure that you have followed the steps above in order to install all dependencies and successfully build the library. Once you have done that, proceed with these additional steps:
