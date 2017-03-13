@@ -1,4 +1,5 @@
-import {inject, bindable, bindingMode} from 'aurelia-framework';
+import { PLATFORM } from "aurelia-pal";
+import {inject, bindable, bindingMode, useView} from 'aurelia-framework';
 import Flatpickr from 'flatpickr';
 
 const defaultConfig = {
@@ -8,6 +9,7 @@ const defaultConfig = {
 };
 
 @inject(Element)
+@useView(PLATFORM.moduleName("./aurelia-flatpickr.html"))
 export class AureliaFlatpickrCustomElement {
 
     @bindable config = {};

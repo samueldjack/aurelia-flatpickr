@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'flatpickr'], function (exports, _aureliaFramework, _flatpickr) {
+define(['exports', 'aurelia-pal', 'aurelia-framework', 'flatpickr'], function (exports, _aureliaPal, _aureliaFramework, _flatpickr) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
@@ -69,7 +69,7 @@ define(['exports', 'aurelia-framework', 'flatpickr'], function (exports, _aureli
         throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
     }
 
-    var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+    var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
     var defaultConfig = {
         enableTime: true,
@@ -77,7 +77,7 @@ define(['exports', 'aurelia-framework', 'flatpickr'], function (exports, _aureli
         altFormat: "F j, Y h:i K"
     };
 
-    var AureliaFlatpickrCustomElement = exports.AureliaFlatpickrCustomElement = (_dec = (0, _aureliaFramework.inject)(Element), _dec2 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = (_class2 = function () {
+    var AureliaFlatpickrCustomElement = exports.AureliaFlatpickrCustomElement = (_dec = (0, _aureliaFramework.inject)(Element), _dec2 = (0, _aureliaFramework.useView)(_aureliaPal.PLATFORM.moduleName("./aurelia-flatpickr.html")), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
         function AureliaFlatpickrCustomElement(element) {
             _classCallCheck(this, AureliaFlatpickrCustomElement);
 
@@ -217,8 +217,8 @@ define(['exports', 'aurelia-framework', 'flatpickr'], function (exports, _aureli
         initializer: function initializer() {
             return {};
         }
-    }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec2], {
+    }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec3], {
         enumerable: true,
         initializer: null
-    })), _class2)) || _class);
+    })), _class2)) || _class) || _class);
 });

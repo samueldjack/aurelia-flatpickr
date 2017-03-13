@@ -1,4 +1,4 @@
-var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -43,7 +43,8 @@ function _initializerWarningHelper(descriptor, context) {
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-import { inject, bindable, bindingMode } from 'aurelia-framework';
+import { PLATFORM } from "aurelia-pal";
+import { inject, bindable, bindingMode, useView } from 'aurelia-framework';
 import Flatpickr from 'flatpickr';
 
 const defaultConfig = {
@@ -52,7 +53,7 @@ const defaultConfig = {
     altFormat: "F j, Y h:i K"
 };
 
-export let AureliaFlatpickrCustomElement = (_dec = inject(Element), _dec2 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = (_class2 = class AureliaFlatpickrCustomElement {
+export let AureliaFlatpickrCustomElement = (_dec = inject(Element), _dec2 = useView(PLATFORM.moduleName("./aurelia-flatpickr.html")), _dec3 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = class AureliaFlatpickrCustomElement {
 
     constructor(element) {
         _initDefineProp(this, 'config', _descriptor, this);
@@ -149,7 +150,7 @@ export let AureliaFlatpickrCustomElement = (_dec = inject(Element), _dec2 = bind
     initializer: function () {
         return {};
     }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec2], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec3], {
     enumerable: true,
     initializer: null
-})), _class2)) || _class);
+})), _class2)) || _class) || _class);
