@@ -45,7 +45,6 @@ function _initializerWarningHelper(descriptor, context) {
 
 import { inject, bindable, bindingMode } from 'aurelia-framework';
 import Flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.css';
 
 const defaultConfig = {
     enableTime: true,
@@ -115,12 +114,14 @@ export let AureliaFlatpickrCustomElement = (_dec = inject(Element), _dec2 = bind
     }
 
     _datesAreSynced(model, view) {
+        model = model || [];
+
         let modelDates = Array.isArray(model) ? model : [model];
 
         for (let d = 0; d < modelDates.length; d++) {
             let modelDate = modelDates[d];
 
-            if (view.indexOf(modelDate) > -1) {
+            if (view.findIndex(v => v.valueOf() === modelDate.valueOf()) > -1) {
                 continue;
             }
 
@@ -130,7 +131,7 @@ export let AureliaFlatpickrCustomElement = (_dec = inject(Element), _dec2 = bind
         for (let d = 0; d < view.length; d++) {
             let viewDate = view[d];
 
-            if (modelDates.indexOf(viewDate) > -1) {
+            if (modelDates.findIndex(m => m.valueOf() === viewDate.valueOf()) > -1) {
                 continue;
             }
 
