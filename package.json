@@ -50,7 +50,7 @@
     "yargs": "^4.8.1"
   },
   "dependencies": {
-    "flatpickr": "^2.3.7"
+    "flatpickr": "^4.1.0"
   },
   "aurelia": {
     "build": {
